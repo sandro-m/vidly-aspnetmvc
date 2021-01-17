@@ -41,21 +41,3 @@
 <h2>4. Criar Aplicação ASP NET MVC 5</h2>
 
 <p>File > New > Project > ASP .NET Web Application > Select Template: MVC (Authentication: Individual User Account) > 'Click Ok'</p>
-
-<h2>5. MVC em Ação</h2>
-
-<ul>
-  <li>Adicionado uma nova classe na pasta Models, Movie.cs;</li>
-  <li>Adicionado MovieController na pasta Controllers;</li>
-  <li>Adicionado RandomView na pasta ~/Views/Movies.</li>
-</ul>
-
-Ao entrar na URL http://localhost:XXXXX/Movies/Random, o controller atenderá a sua requisição e retornará a view Random.
-
-<h2>6. Adicionando um tema</h2>
-
-<ul>
-  <li>Faça download <a href="https://bootswatch.com/lumen/">Bootstrap Lumen</a>;</li>
-  <li>Renomear para 'boostrap-lumen.css' e cole o CSS na pasta Content do projeto Vidly;</li>
-  <li>No arquivo BundleConfig.cs, alterar a '~/Content/bootstrap.css' para '~/Content/bootstrap-lumen.css'.</li>
-</ul>
