@@ -59,3 +59,17 @@ Ao entrar na URL http://localhost:XXXXX/Movies/Random, o controller atenderá a 
   <li>Renomear para 'boostrap-lumen.css' e cole o CSS na pasta Content do projeto Vidly;</li>
   <li>No arquivo BundleConfig.cs, alterar a '~/Content/bootstrap.css' para '~/Content/bootstrap-lumen.css'.</li>
 </ul>
+
+<h2>7. Layout do Curso</h2>
+
+<ul>
+  <li>ASP .NET MVC Fundamentals;</li>
+  <li>Entity Framework (Code-first);</li>
+  <li>Forms;</li>
+  <li>Validation;</li>
+  <li>Build RESTful Services;</li>
+  <li>Client-side Development;</li>
+  <li>Autenticação e Autorização;</li>
+  <li>Otimização da Performance;</li>
+  <li>Criar Feature End-To-End.</li>
+</ul>
