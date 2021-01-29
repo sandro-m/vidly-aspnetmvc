@@ -21,7 +21,7 @@
   <li>Registrar o aluguel de filmes.</li>
 </ul>
 
-<p>Módulos habilitados para o Administrador:</p>
+<p>Módulos habilitados para o Funcionário:</p>
 
 <ul>
   <li>Listar os clientes;</li>
@@ -74,7 +74,7 @@ Ao entrar na URL http://localhost:XXXXX/Movies/Random, o controller atenderá a 
   <li>Criar Feature End-To-End.</li>
 </ul>
 
-<h2>7. Action Results</h2>
+<h2>8. Action Results</h2>
 
 <table>
   <tr>
