@@ -73,3 +73,65 @@ Ao entrar na URL http://localhost:XXXXX/Movies/Random, o controller atenderá a 
   <li>Otimização da Performance;</li>
   <li>Criar Feature End-To-End.</li>
 </ul>
+
+<h2>7. Action Results</h2>
+
+<table>
+  <tr>
+    <th>Types</th>
+    <th>Helper Method</th>
+  </tr>
+  <tr>
+    <td>ViewResult</td>
+    <td>View()</td>
+  </tr>
+  <tr>
+    <td>PartialViewResult</td>
+    <td>PartialView()</td>
+  </tr>
+  <tr>
+    <td>ContentResult</td>
+    <td>Content()</td>
+  </tr>
+  <tr>
+    <td>RedirectResult</td>
+    <td>Redirect()</td>
+  </tr>
+  <tr>
+    <td>RedirectToRouteResult</td>
+    <td>RedirectToAction()</td>
+  </tr>
+  <tr>
+    <td>JsonResult</td>
+    <td>Json</td>
+  </tr>
+  <tr>
+    <td>FileResult</td>
+    <td>File()</td>
+  </tr>
+  <tr>
+    <td>HttpNotFoundResult</td>
+    <td>HttpNotFound()</td>
+  </tr>
+  <tr>
+    <td>EmptyResult</td>
+    <td></td>
+  </tr>
+</table>
+
+<code>
+public ActionResult Random() {
+  
+    var movie = new Movie()
+    {
+        Id = 1,
+        Name = "Shrek"
+    };
+
+    //return View(movie);                     <--- Retorna a View (~/Views/Home/Random) com o objeto do tipo Movie
+    //return Content("Hello World");          <--- Retorna uma página com fundo branco escrito "Hello World"
+    //return HttpNotFound();                  <--- Retorna uma página de mensagem de erro 404
+    //return new EmptyResult();               <--- Retorna uma página em branco
+    return RedirectToAction("Index", "Home"); <--- Retorna a página principal da Aplicação
+}
+</code>

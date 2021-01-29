@@ -18,7 +18,11 @@ namespace vidly_aspnetmvc.Controllers
                 Name = "Shrek"
             };
 
-            return View(movie);
+            //return View(movie);
+            //return Content("Hello World");
+            //return HttpNotFound();
+            //return new EmptyResult();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
