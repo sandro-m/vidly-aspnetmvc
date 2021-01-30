@@ -21,7 +21,7 @@
   <li>Registrar o aluguel de filmes.</li>
 </ul>
 
-<p>Módulos habilitados para o Administrador:</p>
+<p>Módulos habilitados para o Funcionário:</p>
 
 <ul>
   <li>Listar os clientes;</li>
@@ -74,7 +74,7 @@ Ao entrar na URL http://localhost:XXXXX/Movies/Random, o controller atenderá a 
   <li>Criar Feature End-To-End.</li>
 </ul>
 
-<h2>7. Action Results</h2>
+<h2>8. Action Results</h2>
 
 <table>
   <tr>
@@ -119,7 +119,7 @@ Ao entrar na URL http://localhost:XXXXX/Movies/Random, o controller atenderá a 
   </tr>
 </table>
 
-<code>
+<pre><code class='language-cs'>
 public ActionResult Random() {
   
     var movie = new Movie()
@@ -134,4 +134,63 @@ public ActionResult Random() {
     //return new EmptyResult();               <--- Retorna uma página em branco
     return RedirectToAction("Index", "Home"); <--- Retorna a página principal da Aplicação
 }
-</code>
+</code></pre>
+
+<h2>9. Action Parameters</h2>
+
+Parameters Source:
+
+<ul>
+  <li>Na URL: /movie/edit/1</li>
+  <li>Na Query String: /movie/edit?id=1</li>
+  <li>No Dados de Formulário: id=1</li>
+</ul>
+
+<h4>9.1 Criar Função no MoviesController</h4>
+
+<pre><code class='language-cs'>
+public ActionResult Edit(int id)
+{
+    return Content("id: " + id);
+}
+</code></pre>
+
+Acessando a URL http://localhost:00000/movies/edit/1 retorna a página apresentado valor 'id = 1'.
+
+Se alterarmos o parâmetro 'id' para 'movieId', apresentará um Exceção, pois no arquivo '~/App_Start/RouteConfig.cs' contém uma Rota Mapeada com o nome do parâmetro como 'id':
+
+<pre><code class='language-cs'>
+public static void RegisterRoutes(RouteCollection routes)
+{
+    routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+    <b>routes.MapRoute(
+        name: "Default",
+        url: "{controller}/{action}/{id}",
+        defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+    );</b>
+}
+</code></pre>
+
+Você pode alterar o '{id}' para '{movieId}' para funcionar, mas a URL '/movies/edit/1' apresentaria Exceção. Outrar alternativa sem mudar o MapRoute é utilizar o Query String (/movies/Edit?id=1) para acessar a Action.
+
+<h4>9.2 Criar Função no MoviesController com parâmetros opcionais</h4>
+
+<pre><code class='language-cs'>
+public ActionResult Index(int? pageIndex, string sortBy)
+{
+    if (!pageIndex.HasValue)
+        pageIndex = 1;
+    if (string.IsNullOrWhiteSpace(sortBy))
+        sortBy = "Name";
+    return Content(string.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+}
+</code></pre>
+
+Para criar função com parâmetros opcionais:
+
+<ol>
+  <li>Colocar Váriaveis como 'Nullables';</li>
+  <li>Nesse caso, inserir '?' na frente do 'int' para aceitar o valor 'null' e o tipo 'string' já aceita 'null' como padrão.</li>
+</ol>
+
+Acessando a URL "/movies?pageIndex=1&sortBy=Date", retornará página com os valores passados pela URL ('pageIndex=1&sortBy=Date').
