@@ -234,5 +234,23 @@ routes.MapRoute(
 );
 </code></pre>
 
-<p>Entrando na URL http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.<\p>
-<p>Entrando na URL http://localhost:00000/movies/released/2021/01 retornará o conteúdo.<\p>
+<p>Entrando na URL http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.</p>
+<p>Entrando na URL http://localhost:00000/movies/released/2021/01 retornará o conteúdo.</p>
+
+<h2>11. Atributos de Rotas</h2>
+
+<p>Deixando o mapeamento de rotas mais limpo.</p>
+
+<p>1° Apagar a linha de código da rota customizada e substitua pelo código abaixo:</p>
+<pre><code class='language-cs'>
+	routes.MapMvcAttributeRoutes();
+</code></pre>
+<p>2° Adicione o atributo no MoviesController</p>
+<pre><code class='language-cs'>
+[Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
+public ActionResult ByReleaseDate(int year, int month)
+{
+	return Content(year + "/" + month);
+}
+</code></pre>
+<p>Para mais informações consulte <a href="https://dotnettutorials.net/lesson/attribute-route-constraints-mvc/">Attribute Route Constraints in ASP.NET MVC</a></p>
