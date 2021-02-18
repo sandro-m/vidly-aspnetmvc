@@ -197,7 +197,7 @@ Acessando a URL "/movies?pageIndex=1&sortBy=Date", retornará página com os val
 
 <h2>10. Convention-based Routes</h2>
 
-<h4>10.1 Mútiplos parâmetros</h4>
+<h4>10.1 Múltiplos Parâmetros</h4>
 
 Exemplo: "/movies/released/2015/04"
 
@@ -234,5 +234,5 @@ routes.MapRoute(
 );
 </code></pre>
 
-Ao entrar no http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.
-Ao entrar no http://localhost:63571/movies/released/2021/01 retornará o conteúdo.
+Entrando na URL http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.
+Entrando na URL no http://localhost:00000/movies/released/2021/01 retornará o conteúdo.
