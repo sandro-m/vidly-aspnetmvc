@@ -234,5 +234,5 @@ routes.MapRoute(
 );
 </code></pre>
 
-Entrando na URL http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.
-Entrando na URL http://localhost:00000/movies/released/2021/01 retornará o conteúdo.
+<p>Entrando na URL http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.<\p>
+<p>Entrando na URL http://localhost:00000/movies/released/2021/01 retornará o conteúdo.<\p>
