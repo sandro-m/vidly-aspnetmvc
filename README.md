@@ -194,3 +194,45 @@ Para criar função com parâmetros opcionais:
 </ol>
 
 Acessando a URL "/movies?pageIndex=1&sortBy=Date", retornará página com os valores passados pela URL ('pageIndex=1&sortBy=Date').
+
+<h2>10. Convention-based Routes</h2>
+
+<h4>10.1 Mútiplos parâmetros</h4>
+
+Exemplo: "/movies/released/2015/04"
+
+1° Inserir a rota customizada no arquivo RouteConfig.cs:
+<pre><code class='language-cs'>
+<b>routes.MapRoute(
+	"moviesByReleaseDate",
+	"movies/released/{year}/{month}",
+	new { controller = "Movies", action = "ByReleaseDate" }
+);
+</b>
+routes.MapRoute(
+	name: "Default",
+	url: "{controller}/{action}/{id}",
+	defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
+</code></pre>
+
+2° Criar uma função no MoviesController:
+<pre><code class='language-cs'>
+public ActionResult ByReleaseDate(int year, int month)
+{
+	return Content(year + "/" + month);
+}
+</code></pre>
+
+Caso seja necessário restringir a quantidade de dígitos de cada parâmetro:
+<pre><code class='language-cs'>
+routes.MapRoute(
+	"moviesByReleaseDate",
+	"movies/released/{year}/{month}",
+	new { controller = "Movies", action = "ByReleaseDate" },
+	<b>new { year = @"\d{4}", month= @"\d{2}" }</b>
+);
+</code></pre>
+
+Ao entrar no http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.
+Ao entrar no http://localhost:63571/movies/released/2021/01 retornará o conteúdo.
