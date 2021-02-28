@@ -18,11 +18,9 @@ namespace vidly_aspnetmvc.Controllers
                 Name = "Shrek"
             };
 
-            //return View(movie);
-            //return Content("Hello World");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            return RedirectToAction("Index", "Home");
+            //ViewData["Movie"] = movie;
+            ViewBag.Movie = movie;
+            return View();
         }
         public ActionResult Edit(int id)
         {
@@ -40,7 +38,7 @@ namespace vidly_aspnetmvc.Controllers
 
             return Content(string.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
-
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);

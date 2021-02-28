@@ -197,7 +197,7 @@ Acessando a URL "/movies?pageIndex=1&sortBy=Date", retornará página com os val
 
 <h2>10. Convention-based Routes</h2>
 
-<h4>10.1 Mútiplos parâmetros</h4>
+<h4>10.1 Múltiplos Parâmetros</h4>
 
 Exemplo: "/movies/released/2015/04"
 
@@ -234,5 +234,83 @@ routes.MapRoute(
 );
 </code></pre>
 
-Ao entrar no http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.
-Ao entrar no http://localhost:63571/movies/released/2021/01 retornará o conteúdo.
+<p>Entrando na URL http://localhost:00000/movies/released/2021/1 apresentará erro 404 Not Found.</p>
+<p>Entrando na URL http://localhost:00000/movies/released/2021/01 retornará o conteúdo.</p>
+
+<h2>11. Atributos de Rotas</h2>
+
+<p>Deixando o mapeamento de rotas mais limpo.</p>
+
+<p>1° Apagar a linha de código da rota customizada e substitua pelo código abaixo:</p>
+<pre><code class='language-cs'>
+	routes.MapMvcAttributeRoutes();
+</code></pre>
+<p>2° Adicione o atributo no MoviesController</p>
+<pre><code class='language-cs'>
+<b>[Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]</b>
+public ActionResult ByReleaseDate(int year, int month)
+{
+	return Content(year + "/" + month);
+}
+</code></pre>
+<p>Para mais informações consulte <a href="https://dotnettutorials.net/lesson/attribute-route-constraints-mvc/">Attribute Route Constraints in ASP.NET MVC</a></p>
+
+<h2>12. Passando dados pela Views (Jeito Estranho!!!)</h2>
+
+<h4>12.1 ViewData</h4>
+
+<p>Alterar a ação Random no MoviesController:</p>
+
+<pre><code class='language-cs'>
+public ActionResult Random()
+{
+	var movie = new Movie()
+	{
+		Id = 1,
+		Name = "Shrek"
+	};
+
+	<b>ViewData["Movie"] = movie;</b>
+	return View();
+}
+</code></pre>
+
+<p>Alterar a Random View:</p>
+<pre><code class='html'>
+<b>@using vidly_aspnetmvc.Models</b>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<b><h2>@( ((Movie)ViewData["Movie"]).Name)</h2></b>
+</code></pre>
+
+<h4>12.2 ViewBag</h4>
+
+<p>Alterar a ação Random no MoviesController:</p>
+
+<pre><code class='language-cs'>
+public ActionResult Random()
+{
+	var movie = new Movie()
+	{
+		Id = 1,
+		Name = "Shrek"
+	};
+
+	//ViewData["Movie"] = movie;
+	<b>ViewBag.Movie = movie;</b>
+	return View();
+}
+</code></pre>
+
+<p>Alterar a Random View:</p>
+<pre><code class='html'>
+<b>@using vidly_aspnetmvc.Models</b>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@*@( ((Movie)ViewData["Movie"]).Name)*@</h2>
+<b><h2>@ViewBag.Movie.Name</h2></b>
+</code></pre>
