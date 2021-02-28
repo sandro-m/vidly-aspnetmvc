@@ -1,7 +1,6 @@
-﻿@using vidly_aspnetmvc.Models
+﻿@model vidly_aspnetmvc.ViewsModels.RandomMoviesViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@*@( ((Movie)ViewData["Movie"]).Name)*@</h2>
-<h2>@ViewBag.Movie.Name</h2>
+<h2>@Model.Movie.Name</h2>
