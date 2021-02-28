@@ -259,6 +259,8 @@ public ActionResult ByReleaseDate(int year, int month)
 
 <h4>12.1 ViewData</h4>
 
+<p>É um dicionário de objetos, e só deveria ser usado quando não se sabe a composição do que será o objeto, já que os elementos não possuem tipos e sintaxe de acesso a eles um pouco desconfortável.</p>
+
 <p>Alterar a ação Random no MoviesController:</p>
 
 <pre><code class='language-cs'>
@@ -287,6 +289,8 @@ public ActionResult Random()
 
 <h4>12.2 ViewBag</h4>
 
+<p>É um objeto dinâmico com propriedades criadas no controlador e que é acessível na visão, depois disto ela desaparece.</p>
+
 <p>Alterar a ação Random no MoviesController:</p>
 
 <pre><code class='language-cs'>
@@ -313,4 +317,61 @@ public ActionResult Random()
 }
 <h2>@*@( ((Movie)ViewData["Movie"]).Name)*@</h2>
 <b><h2>@ViewBag.Movie.Name</h2></b>
+</code></pre>
+
+<h2>13. View Models</h2>
+
+<p>Criar uma classe Customer:</p>
+
+<pre><code class='language-cs'>
+<b>public class Customer
+{
+	public int Id { get; set; }
+	public string Name { get; set; }
+}</b>
+</code></pre>
+
+<p>Criar uma pasta 'ViewsModels' na raiz do projeto e criar uma classe 'RandomMoviesViewModel':</p>
+
+<pre><code class='language-cs'>
+<b>public class RandomMoviesViewModel
+{
+	public Movie Movie { get; set; }
+	public List<Customer> Customers { get; set; }
+}</b>
+</code></pre>
+
+<p>Alterar a ação Random no MoviesController:</p>
+
+<pre><code class='language-cs'>
+public ActionResult Random()
+{
+	var movie = new Movie()
+	{
+		Id = 1,
+		Name = "Shrek"
+	};
+	<b>var customers = new List<Customer>
+	{
+		new Customer { Id = 1, Name = "Philip" },
+		new Customer { Id = 2, Name = "Trevor" }
+	};
+
+	<b>var viewModel = new RandomMoviesViewModel()
+	{
+		Movie = movie,
+		Customers = customers
+	};
+	return View(viewModel);</b>
+}
+</code></pre>
+
+<p>Alterar a Random View:</p>
+<pre><code class='html'>
+<b>@model vidly_aspnetmvc.ViewsModels.RandomMoviesViewModel</b>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<b><h2>@Model.Movie.Name</h2></b>
 </code></pre>
