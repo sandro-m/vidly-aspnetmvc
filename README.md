@@ -247,10 +247,70 @@ routes.MapRoute(
 </code></pre>
 <p>2° Adicione o atributo no MoviesController</p>
 <pre><code class='language-cs'>
-[Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
+<b>[Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]</b>
 public ActionResult ByReleaseDate(int year, int month)
 {
 	return Content(year + "/" + month);
 }
 </code></pre>
 <p>Para mais informações consulte <a href="https://dotnettutorials.net/lesson/attribute-route-constraints-mvc/">Attribute Route Constraints in ASP.NET MVC</a></p>
+
+<h2>12. Passando dados pela Views (Jeito Estranho!!!)</h2>
+
+<h4>12.1 ViewData</h4>
+
+<p>Alterar a ação Random no MoviesController:</p>
+
+<pre><code class='language-cs'>
+public ActionResult Random()
+{
+	var movie = new Movie()
+	{
+		Id = 1,
+		Name = "Shrek"
+	};
+
+	<b>ViewData["Movie"] = movie;</b>
+	return View();
+}
+</code></pre>
+
+<p>Alterar a Random View:</p>
+<pre><code class='language-cs'>
+<b>@using vidly_aspnetmvc.Models</b>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<b><h2>@( ((Movie)ViewData["Movie"]).Name)</h2></b>
+</code></pre>
+
+<h4>12.2 ViewBag</h4>
+
+<p>Alterar a ação Random no MoviesController:</p>
+
+<pre><code class='language-cs'>
+public ActionResult Random()
+{
+	var movie = new Movie()
+	{
+		Id = 1,
+		Name = "Shrek"
+	};
+
+	//ViewData["Movie"] = movie;
+	<b>ViewBag.Movie = movie;</b>
+	return View();
+}
+</code></pre>
+
+<p>Alterar a Random View:</p>
+<pre><code class='language-cs'>
+<b>@using vidly_aspnetmvc.Models</b>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@*@( ((Movie)ViewData["Movie"]).Name)*@</h2>
+<b><h2>@ViewBag.Movie.Name</h2></b>
+</code></pre>
