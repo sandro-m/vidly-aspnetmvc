@@ -259,6 +259,8 @@ public ActionResult ByReleaseDate(int year, int month)
 
 <h4>12.1 ViewData</h4>
 
+<p>É um dicionário de objetos, e só deveria ser usado quando não se sabe a composição do que será o objeto, já que os elementos não possuem tipos e sintaxe de acesso a eles um pouco desconfortável.</p>
+
 <p>Alterar a ação Random no MoviesController:</p>
 
 <pre><code class='language-cs'>
@@ -286,6 +288,8 @@ public ActionResult Random()
 </code></pre>
 
 <h4>12.2 ViewBag</h4>
+
+<p>É um objeto dinâmico com propriedades criadas no controlador e que é acessível na visão, depois disto ela desaparece.</p>
 
 <p>Alterar a ação Random no MoviesController:</p>
 
