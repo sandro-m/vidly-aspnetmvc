@@ -276,7 +276,7 @@ public ActionResult Random()
 </code></pre>
 
 <p>Alterar a Random View:</p>
-<pre><code class='language-cs'>
+<pre><code class='html'>
 <b>@using vidly_aspnetmvc.Models</b>
 @{
     ViewBag.Title = "Random";
@@ -305,7 +305,7 @@ public ActionResult Random()
 </code></pre>
 
 <p>Alterar a Random View:</p>
-<pre><code class='language-cs'>
+<pre><code class='html'>
 <b>@using vidly_aspnetmvc.Models</b>
 @{
     ViewBag.Title = "Random";
