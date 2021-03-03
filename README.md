@@ -315,9 +315,10 @@ public ActionResult Random()
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@*@( ((Movie)ViewData["Movie"]).Name)*@</h2>
-<b><h2>@ViewBag.Movie.Name</h2></b>
+<b>@ViewBag.Movie.Name</b>
 </code></pre>
+
+<p>A ViewBag é carregado no controller e é passado para a View. Para acessar, é necessário saber qual nome você atribuiu da ViewBag e a propriedade do modelo.</p>
 
 <h2>13. View Models</h2>
 
@@ -373,5 +374,5 @@ public ActionResult Random()
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<b><h2>@Model.Movie.Name</h2></b>
+<b>@Model.Movie.Name</b>
 </code></pre>
