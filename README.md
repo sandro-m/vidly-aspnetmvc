@@ -284,7 +284,7 @@ public ActionResult Random()
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<b><h2>@( ((Movie)ViewData["Movie"]).Name)</h2></b>
+<b>@( ((Movie)ViewData["Movie"]).Name)</b>
 </code></pre>
 
 <h4>12.2 ViewBag</h4>
@@ -322,6 +322,8 @@ public ActionResult Random()
 
 <h2>13. View Models</h2>
 
+<p>ViewModels é um modelo especificamente para mostrar apenas dados essenciais da View.</p>
+
 <p>Criar uma classe Customer:</p>
 
 <pre><code class='language-cs'>
@@ -332,7 +334,7 @@ public ActionResult Random()
 }</b>
 </code></pre>
 
-<p>Criar uma pasta 'ViewsModels' na raiz do projeto e criar uma classe 'RandomMoviesViewModel':</p>
+<p>Criar uma pasta 'ViewsModels' na raiz do projeto e criar uma classe 'RandomMoviesViewModel', onde a classe representará dois modelos na View:</p>
 
 <pre><code class='language-cs'>
 <b>public class RandomMoviesViewModel
@@ -342,7 +344,7 @@ public ActionResult Random()
 }</b>
 </code></pre>
 
-<p>Alterar a ação Random no MoviesController:</p>
+<p>Inicializando a 'RandomMoviesViewModel' no MoviesController:</p>
 
 <pre><code class='language-cs'>
 public ActionResult Random()
@@ -367,7 +369,7 @@ public ActionResult Random()
 }
 </code></pre>
 
-<p>Alterar a Random View:</p>
+<p>Alterar a Random View para receber a ViewModel:</p>
 <pre><code class='html'>
 <b>@model vidly_aspnetmvc.ViewsModels.RandomMoviesViewModel</b>
 @{
