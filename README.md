@@ -383,7 +383,7 @@ public ActionResult Random()
 <p>Permite inserir lógica de programação C# na View.</p>
 
 <p>Alterando o RandomView para inserir código C#:</p>
-<pre><code class='language-cs'>
+<pre><code class='html'>
 @model vidly_aspnetmvc.ViewsModels.RandomMoviesViewModel
 @{
     ViewBag.Title = "Random";
@@ -406,4 +406,64 @@ else
         }
     </ul>
 }</b>
+</code></pre>
+
+<h2>15. Partial Views</h2>
+
+<p></p>
+
+<p>Criar Partial View '_NavBar' na pasta '~/Views/Shared'.</p>
+
+![partiaView_create](https://user-images.githubusercontent.com/26336105/110556798-018dbc00-811e-11eb-8c92-a85c66914fad.PNG)
+
+<p>Copiar o código barra de navegação para a Partial View '_NavBar':</p>
+<pre><code class='html'>
+<b><nav class="navbar navbar-inverse navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            @Html.ActionLink("Vidly", "Index", "Home", null, new { @class = "navbar-brand" })
+        </div>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                </li>
+            </ul>
+        </div>
+        @Html.Partial("_LoginPartial")
+    </div>
+</nav></b>
+</code></pre>
+
+<p>Inserir coódigo Razor para renderizar a Partial View:</p>
+<pre><code class='html'>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Vidly</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <b>@Html.Partial("_NavBar")</b>
+    <b>@*@Html.Partial("_NavBar") <-- Permite passar modelo para a Partial View *@</b>
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
 </code></pre>
