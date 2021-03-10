@@ -378,3 +378,32 @@ public ActionResult Random()
 }
 <b>@Model.Movie.Name</b>
 </code></pre>
+<h2>14. Sintaxe Razor</h2>
+
+<p>Permite inserir lógica de programação C# na View.</p>
+
+<p>Alterando o RandomView para inserir código C#:</p>
+<pre><code class='language-cs'>
+@model vidly_aspnetmvc.ViewsModels.RandomMoviesViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<b>
+@{
+    var className = Model.Customers.Count > 5 ? "popular" : null;
+}
+<h2 class="@className">@Model.Movie.Name</h2>
+
+@if (Model.Customers.Count > 0) {
+    <text>Ninguém havia alugado este filme antes.</text>
+}
+else 
+{
+    <ul>
+        @foreach (var customer in Model.Customers) {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}</b>
+</code></pre>
