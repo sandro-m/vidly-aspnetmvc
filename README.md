@@ -417,7 +417,7 @@ else
 ![partiaView_create](https://user-images.githubusercontent.com/26336105/110556798-018dbc00-811e-11eb-8c92-a85c66914fad.PNG)
 
 <p>Copiar o código barra de navegação para a Partial View '_NavBar':</p>
-<pre><code class='html'>
+<snippet>
 <b><nav class="navbar navbar-inverse navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -436,10 +436,10 @@ else
         @Html.Partial("_LoginPartial")
     </div>
 </nav></b>
-</code></pre>
+</snippet>
 
 <p>Inserir código Razor para renderizar a Partial View:</p>
-<pre><code class='html'>
+<snippet>
 <body>
     <b>@Html.Partial("_NavBar")</b>
     <b>@*@Html.Partial("_NavBar") <-- Permite passar modelo para a Partial View *@</b>
@@ -456,4 +456,4 @@ else
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
-</code></pre>
+</snippet>
