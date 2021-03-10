@@ -438,17 +438,8 @@ else
 </nav></b>
 </code></pre>
 
-<p>Inserir coódigo Razor para renderizar a Partial View:</p>
+<p>Inserir código Razor para renderizar a Partial View:</p>
 <pre><code class='html'>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Vidly</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
 <body>
     <b>@Html.Partial("_NavBar")</b>
     <b>@*@Html.Partial("_NavBar") <-- Permite passar modelo para a Partial View *@</b>
@@ -465,5 +456,4 @@ else
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
-</html>
 </code></pre>
