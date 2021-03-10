@@ -417,43 +417,41 @@ else
 ![partiaView_create](https://user-images.githubusercontent.com/26336105/110556798-018dbc00-811e-11eb-8c92-a85c66914fad.PNG)
 
 <p>Copiar o código barra de navegação para a Partial View '_NavBar':</p>
-```csharp
-<b><nav class="navbar navbar-inverse navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            @Html.ActionLink("Vidly", "Index", "Home", null, new { @class = "navbar-brand" })
-        </div>
-        <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
-                </li>
-            </ul>
-        </div>
-        @Html.Partial("_LoginPartial")
-    </div>
-</nav></b>
-```
+
+><b><nav class="navbar navbar-inverse navbar-expand-lg navbar-light bg-light">
+>    <div class="container-fluid">
+>        <div class="navbar-header">
+>            @Html.ActionLink("Vidly", "Index", "Home", null, new { @class = "navbar-brand" })
+>        </div>
+>        <div class="collapse navbar-collapse" id="navbarColor03">
+>            <ul class="navbar-nav mr-auto">
+>                <li class="nav-item">
+>                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+>                </li>
+>                <li class="nav-item">
+>                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+>                </li>
+>            </ul>
+>       </div>
+>        @Html.Partial("_LoginPartial")
+>    </div>
+></nav></b>
 
 <p>Inserir código Razor para renderizar a Partial View:</p>
-```csharp
-<body>
-    <b>@Html.Partial("_NavBar")</b>
-    <b>@*@Html.Partial("_NavBar") <-- Permite passar modelo para a Partial View *@</b>
-    <br />
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-```
+><body>
+>    <b>@Html.Partial("_NavBar")</b>
+>    <b>@*@Html.Partial("_NavBar") <-- Permite passar modelo para a Partial View *@</b>
+>    <br />
+>    <div class="container body-content">
+>        @RenderBody()
+>        <hr />
+>        <footer>
+>            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+>        </footer>
+>    </div>
+>
+>    @Scripts.Render("~/bundles/jquery")
+>    @Scripts.Render("~/bundles/bootstrap")
+>    @RenderSection("scripts", required: false)
+></body>
