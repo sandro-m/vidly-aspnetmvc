@@ -378,3 +378,6 @@ public ActionResult Random()
 }
 <b>@Model.Movie.Name</b>
 </code></pre>
+<h2>14. Sintaxe Razor</h2>
+
+<p>Permite inserir lógica de programação C# na View.</p>
