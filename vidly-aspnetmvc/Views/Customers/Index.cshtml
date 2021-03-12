@@ -1,0 +1,28 @@
+﻿@model List<vidly_aspnetmvc.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (Model.Count == 0)
+{
+    <p>No momento não temos clientes cadastrados no sistema!</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model) {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", null, new { id = @customer.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
