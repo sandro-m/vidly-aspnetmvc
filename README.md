@@ -455,3 +455,7 @@ else
 >    @Scripts.Render("~/bundles/bootstrap")
 >    @RenderSection("scripts", required: false)
 ></body>
+
+<h2>16. Entity Framework</h2>
+
+![efw](https://user-images.githubusercontent.com/26336105/111394697-03193000-869a-11eb-942f-30a8dee18b16.jpg)
